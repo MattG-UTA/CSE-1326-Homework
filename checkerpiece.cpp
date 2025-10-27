@@ -8,6 +8,13 @@ checkerpiece::checkerpiece(int boardY, int boardX)
 	xCord = boardX;
 };
 
+/*checkerpiece::checkerpiece(const checkerpiece& hardCopy)
+{
+        yCord = hardCopy.yCord;
+        xCord = hardCopy.xCord;
+        color = hardCopy.color;
+}*/
+
 int checkerpiece::getY() 
 {
 	return yCord;
@@ -20,17 +27,13 @@ int checkerpiece::getX()
 
 void checkerpiece::setColor() 
 {
-	{
-		if(this->getY() <= 2) 
+		if(this->getY() < 3) 
 		{
 			color = Color::Red;
 		}
-	}
-	
-	{
-		if(this->getX() >= 6) 
+		else if(this->getY() > 4) 
 		{
 			color = Color::Black;
-		}
-	}	
+		} 
+		else {color = Color::None; }	
 }
