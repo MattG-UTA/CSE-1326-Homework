@@ -3,9 +3,11 @@ class checkerpiece
 {	
 	public:
 	enum class Color {Red, Black, None};
+	enum class Type {Pawn, King};
 	int yCord;
 	int xCord;
 	Color color;
+	Type unit;
 	
 	checkerpiece();
 	
@@ -16,5 +18,6 @@ class checkerpiece
 	int getY();
 	int getX();
 	void setColor();
+	void makeKing();
 		
 };

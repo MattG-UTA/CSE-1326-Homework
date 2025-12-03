@@ -6,6 +6,7 @@ checkerpiece::checkerpiece(int boardY, int boardX)
 {
 	yCord = boardY;
 	xCord = boardX;
+	unit = Type::Pawn;
 };
 
 /*checkerpiece::checkerpiece(const checkerpiece& hardCopy)
@@ -36,4 +37,9 @@ void checkerpiece::setColor()
 			color = Color::Black;
 		} 
 		else {color = Color::None; }	
+}
+
+void checkerpiece::makeKing() 
+{
+	unit = Type::King;
 }

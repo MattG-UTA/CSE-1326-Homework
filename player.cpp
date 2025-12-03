@@ -1,6 +1,8 @@
 #include "player.hpp"
 #include <cstring>
 #include <cstdio>
+#include <cctype>
+
 player::player() 
 {
 	y = 0;
@@ -12,7 +14,7 @@ player::player()
 
 void player::movePiece(char *userMove) 
 {
-	char *tempString = new char [strlen(userMove) +1];
+	char *tempString = new char [strlen(userMove) + 1];
 	strcpy(tempString, userMove);
 	moves.push_back(tempString);
 	this->parseMove(userMove);	
@@ -33,7 +35,7 @@ void player::movePiece(char *userMove)
 void player::parseMove(char *move) 
 {
     char *piece = strtok(move, " ");
-    strtok(NULL, " "); // skip "to"
+    strtok(NULL, " "); 
     char *place = strtok(NULL, " ");
     this->convertPiece(piece);
     this->convertPlace(place);
@@ -47,7 +49,7 @@ void player::convertPiece(char *convert)
 	{
 		if(i == 0)
 		{
-		switch(convert[i]) 
+		switch(std::toupper(convert[i])) 
 		{
 			case 'A':
 			    	y = 0;
@@ -114,7 +116,7 @@ void player::convertPlace(char *convert)
 	{
 		if(i == 0)
 			{
-			switch(convert[i]) 
+			switch(std::toupper(convert[i])) 
 			{
 				case 'A':
 				    	Y = 0;
@@ -177,11 +179,13 @@ void player::convertPlace(char *convert)
 
 void player::printMoves() 
 {
+	printf("Player Moves:\n");
 	for(auto& element : moves) 
 	{
 		printf("%s\n", element);
 	}
 }
+
 
 player::~player() 
 {
